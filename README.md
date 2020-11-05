@@ -1,10 +1,7 @@
 
-# Full Stack Project Practice
+# Full Stack Project - MyDrugs
 
-Be prepared to discuss these items with a consultant during a 1 on 1.
 
-You may use GitHub, PowerPoint, Keynote, or any other tools you desire to
-complete any part of this.
 
 ## Project Idea
 
