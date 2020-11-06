@@ -1,5 +1,7 @@
 
-# Full Stack Project - MyDrugs
+# Full Stack Project - MyDrugs (back end)
+
+This project is a student work
 
 -A drug prescription app(stores the prescription and the drug info)
 -I've thought about this app idea when I personally experienced how impossible it is
