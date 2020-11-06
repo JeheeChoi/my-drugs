@@ -6,6 +6,6 @@ URL_PATH="/prescriptions"
 curl "${API}${URL_PATH}/${ID}" \
   --include \
   --request DELETE \
-  --header "Authorization: Bearer ${TOKEN}"
+  --header "Authorization: Bearer ${TOKEN}" \
 
 echo

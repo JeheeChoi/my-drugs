@@ -122,20 +122,22 @@ router.patch('/prescriptions/:id', requireToken, removeBlanks, (req, res, next) 
 //
 //
 // DELETE Prescription
-router.delete('/examples/:id', requireToken, (req, res, next) => {
-  Example.findById(req.params.id)
+router.delete('/prescriptions/:id', requireToken, (req, res, next) => {
+  Prescription.findById(req.params.id)
     .then(handle404)
-    .then(example => {
+    .then(prescription => {
       // throw an error if current user doesn't own `example`
-      requireOwnership(req, example)
+      requireOwnership(req, prescription)
       // delete the example ONLY IF the above didn't throw
-      example.deleteOne()
+      prescription.deleteOne()
     })
     // send back 204 and no content if the deletion succeeded
     .then(() => res.sendStatus(204))
     // if an error occurs, pass it to the handler
     .catch(next)
 })
-
+//
+//
+//
 
 module.exports = router
