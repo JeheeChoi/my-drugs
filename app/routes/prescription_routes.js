@@ -18,6 +18,10 @@ const handle404 = customErrors.handle404
 // that's owned by someone else
 const requireOwnership = customErrors.requireOwnership
 
+// this is middleware that will remove blank fields from `req.body`, e.g.
+// { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
+const removeBlanks = require('../../lib/remove_blank_fields')
+
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
@@ -48,11 +52,15 @@ router.post('/prescriptions', requireToken, (req, res, next) => {
     // can send an error message back to the client
     .catch(next)
 })
-
+//
+//
+//
 // GET Prescriptions - show all the prescriptions user created
+// router.get('/prescriptions', requiredToken, (req, res, next) => {
 router.get('/prescriptions', requireToken, (req, res, next) => {
+  // ADD REQUIREDTOKEN LATER
   // Prescription.find({ owner: req.user.id })
-  Prescription.find()
+  Prescription.find({ owner: req.user.id })
     .then(prescriptions => {
       // prescription array of Mongoose documents
       // convert each one to a POJO, so we use `.map` to
@@ -64,5 +72,70 @@ router.get('/prescriptions', requireToken, (req, res, next) => {
     // if an error occurs, pass it to the handler
     .catch(next)
 })
+// TEST CURL SCRIPT
+// $ TOKEN=f59c72b262436889101ac901cb8d4493 sh curl-scripts/prescriptions/index.sh
+//
+//
+//
+// GET a specific prescription - show single prescription user is looking for
+// ADD REQUIREDTOKEN LATER
+// router.get('/prescriptions/:id', requiredToken, (req, res, next) => {
+router.get('/prescriptions/:id', (req, res, next) => {
+  // req.params.id will be set based on the `:id` in the route
+  Prescription.findById(req.params.id)
+    .then(handle404)
+    // if `findById` is succesful, respond with 200 and prescription JSON
+    .then(prescription => res.status(200).json({ prescription: prescription.toObject() }))
+    // if an error occurs, pass it to the handler
+    .catch(next)
+})
+// TEST CURL SCRIPT
+// $ ID=5fa4598238055a33a1426838 TOKEN=b3e9bb026d21a7f2ea7c845cebe93fe3
+// sh curl-scripts/prescriptions/show.sh
+// browser: http://localhost:4741/prescriptions/5fa4598238055a33a1426838
+//
+//
+//
+// UPDATE Prescription
+router.patch('/prescriptions/:id', requireToken, removeBlanks, (req, res, next) => {
+  // if the client attempts to change the `owner` property by including a new
+  // owner, prevent that by deleting that key/value pair
+  delete req.body.prescription.owner
+
+  Prescription.findById(req.params.id)
+    .then(handle404)
+    .then(prescription => {
+      // pass the `req` object and the Mongoose record to `requireOwnership`
+      // it will throw an error if the current user isn't the owner
+      requireOwnership(req, prescription)
+
+      // pass the result of Mongoose's `.update` to the next `.then`
+      return prescription.updateOne(req.body.prescription)
+    })
+    // if that succeeded, return 204 and no JSON
+    .then(() => res.sendStatus(204))
+    // if an error occurs, pass it to the handler
+    .catch(next)
+})
+//
+//
+//
+//
+// DELETE Prescription
+router.delete('/examples/:id', requireToken, (req, res, next) => {
+  Example.findById(req.params.id)
+    .then(handle404)
+    .then(example => {
+      // throw an error if current user doesn't own `example`
+      requireOwnership(req, example)
+      // delete the example ONLY IF the above didn't throw
+      example.deleteOne()
+    })
+    // send back 204 and no content if the deletion succeeded
+    .then(() => res.sendStatus(204))
+    // if an error occurs, pass it to the handler
+    .catch(next)
+})
+
 
 module.exports = router
