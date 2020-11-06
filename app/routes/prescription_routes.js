@@ -126,9 +126,9 @@ router.delete('/prescriptions/:id', requireToken, (req, res, next) => {
   Prescription.findById(req.params.id)
     .then(handle404)
     .then(prescription => {
-      // throw an error if current user doesn't own `example`
+      // throw an error if current user doesn't own a prescription
       requireOwnership(req, prescription)
-      // delete the example ONLY IF the above didn't throw
+      // delete the prescription ONLY IF the above didn't throw
       prescription.deleteOne()
     })
     // send back 204 and no content if the deletion succeeded
@@ -136,6 +136,7 @@ router.delete('/prescriptions/:id', requireToken, (req, res, next) => {
     // if an error occurs, pass it to the handler
     .catch(next)
 })
+//
 //
 //
 //
