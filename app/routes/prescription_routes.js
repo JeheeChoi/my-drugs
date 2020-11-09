@@ -31,22 +31,16 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // CREATE Prescriptions - create a new prescription
-// ownership required
 router.post('/prescriptions', requireToken, (req, res, next) => {
   // set owner of new prescription to be current user
   req.body.prescription.owner = req.user.id
 
   Prescription.create(req.body.prescription)
-    // use this function to send 404 when non-existant document is requested
-    .then(handle404)
+    // .then(console.log(req.body))
     .then(prescription => {
-      // throw an error if current user doesn't own `example`
-      requireOwnership(req, prescription)
-      // create the prescription ONLY IF the above didn't throw
       // respond to succesful `create` with status 201 and JSON of new prescription
       res.status(201).json({ prescription: prescription.toObject() })
     })
-
     // if an error occurs, pass it off to our error handler
     // the error handler needs the error message and the `res` object so that it
     // can send an error message back to the client
