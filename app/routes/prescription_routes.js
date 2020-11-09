@@ -80,7 +80,7 @@ router.get('/prescriptions', requireToken, (req, res, next) => {
 // GET a specific prescription - show single prescription user is looking for
 // ADD REQUIREDTOKEN LATER
 // router.get('/prescriptions/:id', requiredToken, (req, res, next) => {
-router.get('/prescriptions/:id', (req, res, next) => {
+router.get('/prescriptions/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Prescription.findById(req.params.id)
     .then(handle404)
