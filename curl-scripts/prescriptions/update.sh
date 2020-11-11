@@ -12,9 +12,7 @@ curl "${API}${URL_PATH}/${ID}" \
     "prescription": {
       "name": "'"${NAME}"'",
       "description": "'"${DESCRIPTION}"'",
-      "dr": "'"${DR}"'",
-      "date": "'"${DATE}"'",
-      "refill": "'"${REFILL}"'"
+      "dr": "'"${DR}"'"
     }
   }'
 
