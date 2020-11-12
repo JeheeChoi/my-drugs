@@ -15,7 +15,7 @@ to remember the names of the meds/when did I get it/refill?/dr's name?/descripti
 - [Deployed Client](https://jeheechoi.github.io/my-drugs-client/)
 
 
-## User stories
+### User stories
 
 - User can sign up/sign in/sign out/change pw
 - User can create(add) a record of a prescription
@@ -28,7 +28,7 @@ to remember the names of the meds/when did I get it/refill?/dr's name?/descripti
 
 Please create a wireframe of your planned front end.
 
-
+![wireframe1](https://i.imgur.com/GNA3lxo.png)
 https://imgur.com/a/EnDex7R
 
 
@@ -47,7 +47,7 @@ Prescription attributes: drugName, description, orderBy(dr's name), date, refill
 
 
 One to many relationship: a user to many prescriptions.
-- [!ERD] (https://i.imgur.com/ctfBUsw.png)
+![ERD1](https://i.imgur.com/ctfBUsw.png)
 https://imgur.com/a/NTsBb3s
 
 
