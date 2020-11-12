@@ -10,7 +10,7 @@ to remember the names of the meds/when did I get it/refill?/dr's name?/descripti
 
 ## Important Links
 
-- [Project Repo Front End] (https://github.com/JeheeChoi/my-drugs-client)
+- [Project Repo] (https://github.com/JeheeChoi/my-drugs-client)
 - [Deployed API](https://salty-woodland-25840.herokuapp.com/prescriptions)
 - [Deployed Client](https://jeheechoi.github.io/my-drugs-client/)
 
