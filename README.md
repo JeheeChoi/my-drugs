@@ -8,6 +8,12 @@ This project is a student work
 to remember the names of the meds/when did I get it/refill?/dr's name?/description/etc.
 - Any patients who get prescriptions from a doctor
 
+### Unsolved Problems
+
+- I still need to update/organize page layout
+- I need to make each prescription clickable to be selected in order to update(edit)  
+- I would like to add a visible user profile right by the prescription view page after user signing in
+
 ## Important Links
 
 - [Project Repo](https://github.com/JeheeChoi/my-drugs-client)
@@ -20,6 +26,7 @@ to remember the names of the meds/when did I get it/refill?/dr's name?/descripti
 - HTML/CSS
 - jQuery
 - Express
+- MongoDB
 - Mongoose
 
 ### User stories
