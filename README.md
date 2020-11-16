@@ -6,7 +6,7 @@
 to remember the names of the meds/when did I get it/refill?/dr's name?/description/etc.
 - Any patients who get prescriptions from a doctor
 
-## Timetable
+### Timetable
 
 - Day 1 - Setting up repos, READme, consulting with instructor, pseudo code, start working on userSchema
 - Day 2 - Working on user - server.js/model/user routes/curl scripts
@@ -44,13 +44,6 @@ to remember the names of the meds/when did I get it/refill?/dr's name?/descripti
 - User can update the prescriptions(log side effects, likes/dislikes)
 - User can delete(archieve) the prescriptions
 
-
-### Wireframes
-
-![wireframe1](https://i.imgur.com/GNA3lxo.png)
-https://imgur.com/a/EnDex7R
-
-
 ### Resources
 
 resources: user, prescription
@@ -64,4 +57,11 @@ One to many relationship: a user to many prescriptions.
 user routes-prescription routes
 ![ERD1](https://i.imgur.com/ctfBUsw.png)
 https://imgur.com/a/NTsBb3s
+
+
+### Wireframes
+
+![wireframe1](https://i.imgur.com/GNA3lxo.png)
+https://imgur.com/a/EnDex7R
+
 
