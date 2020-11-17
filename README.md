@@ -14,6 +14,14 @@ to remember the names of the meds/when did I get it/refill/dr's name/description
 - Day 3 - Working on prescription - server.js/model/prescription routes/curl scripts
 - Day 4 - Finishing up Working on front end
 
+During the project my schedule's got adjusted as:
+
+- Day 1 - Setting up repos, READme, consulting with instructor, start working on userSchema & back end routes
+- Day 2 - Worked on back end CRUD and front end CRUD at the same time. Completed both back end/front end's 'Get' completed. 
+- Day 3 - Completed Get/Post 
+- Day 4 - Completed Patch/Delete and finished ui
+- Extra days - Fixed hide/show issues
+
 ### Unsolved Problems
 
 - I need to make each prescription clickable on Update Prescription page, so that user can select the prescription he/she wants to update(edit)
