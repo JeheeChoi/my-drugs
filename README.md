@@ -4,7 +4,7 @@
 
 - A drug prescription app that allows user to create/delete/update prescriptions.
 - I've thought about this app idea when I personally experienced how impossible it is
-to remember the names of the meds/when did I get it/refill?/dr's name?/description/etc.
+to remember the names of the meds/when did I get it/refill/dr's name/description/etc.
 - Any patients who get prescriptions from a doctor
 
 ### Timetable
